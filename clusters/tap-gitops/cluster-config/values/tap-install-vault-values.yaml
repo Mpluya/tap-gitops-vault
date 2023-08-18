@@ -1,0 +1,15 @@
+---
+tap_install:
+  secrets:
+    eso:
+      vault:
+        server: https://vault-ui.full.cssa.tapsme.org/
+        namespace: ""
+        auth:
+          kubernetes:
+            mountPath: tap-gitops
+            role: tap-gitops--tap-install-secrets
+      remote_refs:
+        tap_sensitive_values:
+          sensitive_tap_values_yaml:
+            key: secret/dev/tap-gitops/tap/sensitive-values.yaml
