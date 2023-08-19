@@ -1,0 +1,38 @@
+---
+tap_install:
+  values:
+    profile: full
+    ceip_policy_disclosed: true
+
+    shared:
+      ingress_domain: gitops.cssa.tapsme.org
+      ingress_issuer: letsencrypt-production      
+      image_registry:  
+        project_path: "registry.harbor.learn.tapsme.org/tap-build"
+        username: "robot$unicorn-robot"
+        
+    supply_chain: basic
+
+    contour:
+      envoy:
+        service:
+          type: LoadBalancer
+
+    tap_gui:
+      service_type: ClusterIP
+      app_config:
+        auth:
+          allowGuestAccess: true
+        organization:
+          name: "CSSA Team"
+        catalog:
+          locations:
+            - type: url
+              target: https://github.com/maelarge/tap-catalog/blob/main/catalog-info.yaml        
+    
+    crossplane:
+      orphan_resources: false
+
+    namespace_provisioner:
+      controller: true
+        
