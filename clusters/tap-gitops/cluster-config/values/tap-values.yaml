@@ -16,7 +16,7 @@ tap_install:
     contour:
       envoy:
         service:
-          type: LoadBalancer
+          type: ClusterIP
 
     tap_gui:
       service_type: ClusterIP
